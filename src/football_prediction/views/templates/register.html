@@ -1,0 +1,17 @@
+{% extends "football_prediction/views/templates/base.html" %} 
+{% block style %}
+	<link href="{{context}}/css/signin.css" rel="stylesheet" type="text/css" />
+{% endblock %} 
+
+{% block content %}
+<div class="container">
+	<form class="form-signin" method="post" action="/register">
+		<h2 class="form-signin-heading">Register</h2>
+		<input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus> 
+		<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+		<input type="password" id="password1" name="password1" class="form-control" placeholder="Retype password" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+	</form>
+</div>
+<!-- /container -->
+{% endblock %}
