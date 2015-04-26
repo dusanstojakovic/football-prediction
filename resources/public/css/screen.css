@@ -9,3 +9,7 @@
 .form-signin button {
 	margin-top: 20px;
 }
+
+.error {
+	color: #ff0000;
+}

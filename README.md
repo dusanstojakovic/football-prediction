@@ -16,4 +16,9 @@ To start a web server for the application, run:
 
 ## License
 
+
+Submit 3. 
+
+Added: register and login, database functions, error validation, different menu for guests and users.
+
 Copyright © 2015 FIXME

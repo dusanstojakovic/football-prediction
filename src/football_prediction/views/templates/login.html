@@ -7,6 +7,7 @@
 <div class="container">
 	<form class="form-signin" method="post" action="/login">
 		<h2 class="form-signin-heading">Please log in</h2>
+		<div class="error">{{login-err}}</div> 
 		<label for="username" class="sr-only">Username</label> 
 		<input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus> 
 		<label for="password" class="sr-only">Password</label> 

@@ -7,3 +7,11 @@
    :user "pcelarst_dusan"
    :password "clojure123!"})
 
+(defn create-user [user]
+  (sql/with-connection db
+    (sql/insert-record :users user)))
+
+(defn get-user [username]
+  (sql/with-connection db
+    (sql/with-query-results
+      res ["select * from users where username = ?" username] (first res))))
