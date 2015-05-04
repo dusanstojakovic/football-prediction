@@ -21,4 +21,8 @@ Submit 3.
 
 Added: register and login, database functions, error validation, different menu for guests and users.
 
+Submit 4. 
+
+Added: Enlive for web scrape. Scrape statistics and fixtures from site. Apply algorithm to the data and calculate odds for matches outcome. 
+
 Copyright © 2015 FIXME
