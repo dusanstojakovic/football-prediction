@@ -18,14 +18,14 @@
 			        </tr>
 			      </thead>
 			      <tbody>
-			      	{% for prediction in predictions %}
+			      	{% for match in matches %}
 				        <tr>
-			        		<td>{{prediction.teamh}}</td>
-				          	<td>{{prediction.teama}}</td>
-				          	<td>{{prediction.home}}%</td>
-				          	<td>{{prediction.draw}}%</td>
-				          	<td>{{prediction.away}}%</td>
-				          	<td><a href="/save-match/{{prediction.teamh}}/{{prediction.teama}}/{{prediction.home}}/{{prediction.draw}}/{{prediction.away}}">Save</a>
+			        		<td>{{match.hometeam}}</td>
+				          	<td>{{match.awayteam}}</td>
+				          	<td>{{match.home}}%</td>
+				          	<td>{{match.draw}}%</td>
+				          	<td>{{match.away}}%</td>
+				          	<td><a href="/remove-match/{{match.id}}">Remove</a>
 				        </tr>
 			        {% endfor %}
 			      </tbody>

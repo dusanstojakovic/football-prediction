@@ -14,6 +14,7 @@
 			          	<th>Home</th>
 			          	<th>Draw</th>
 			          	<th>Away</th>
+			          	<th>Action</th>
 			        </tr>
 			      </thead>
 			      <tbody>
@@ -24,6 +25,7 @@
 				          	<td>{{prediction.home}}%</td>
 				          	<td>{{prediction.draw}}%</td>
 				          	<td>{{prediction.away}}%</td>
+				          	<td><a href="/save-match/{{prediction.teamh}}/{{prediction.teama}}/{{prediction.home}}/{{prediction.draw}}/{{prediction.away}}">Save</a>
 				        </tr>
 			        {% endfor %}
 			      </tbody>

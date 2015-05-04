@@ -4,7 +4,8 @@
             [noir.util.middleware :as noir-middleware]
             [football-prediction.routes.home :refer [home-routes]]
             [football-prediction.routes.account :refer [account-routes]]
-            [football-prediction.routes.predictions :refer [prediction-routes]]))
+            [football-prediction.routes.predictions :refer [prediction-routes]]
+            [football-prediction.routes.matches :refer [matches-routes]]))
 
 (defn init []
   (println "football-prediction is starting"))
@@ -21,4 +22,5 @@
     [home-routes
      account-routes
      prediction-routes
+     matches-routes
      app-routes]))

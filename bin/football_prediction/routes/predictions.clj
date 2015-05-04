@@ -3,7 +3,8 @@
             [clojure.string :refer [trim]]
             [compojure.core :refer :all]
             [football-prediction.views.layout :as layout]
-            [noir.session :as session]))
+            [noir.session :as session]
+            [noir.response :as resp]))
 
 ;;Link to scrape /**current-url = current year statistics; fixtures-url = fixtures
 (def ^:dynamic *current-url* "http://www.scorespro.com/soccer/spain/primera-division/2014-2015/standings/")
@@ -89,8 +90,10 @@
         res)))) 
 
 (defn prediction-page []
-  (layout/render "predictions.html" 
-                 {:predictions (prediction-res fix-set)}))
+  (if (session/get :user)
+    (layout/render "predictions.html" 
+                   {:predictions (prediction-res fix-set)})
+    (resp/redirect "/login")))
 
 (defroutes prediction-routes
   (GET "/prediction" [] (prediction-page)))

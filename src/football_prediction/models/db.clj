@@ -15,3 +15,21 @@
   (sql/with-connection db
     (sql/with-query-results
       res ["select * from users where username = ?" username] (first res))))
+
+(defn get-user-match [id]
+  (sql/with-connection db
+    (sql/with-query-results
+      res ["select username from matches where id = ?" id] (first res))))
+
+(defn remove-match [id]
+  (sql/with-connection db
+    (sql/update-values :matches ["id=?" id] {:status "deleted"})))
+
+(defn get-matches [username]
+  (sql/with-connection db
+    (sql/with-query-results
+      res ["select * from matches where status = 'active' and username = ?" username] (doall res))))
+
+(defn add-match [match]
+  (sql/with-connection db
+    (sql/insert-record :matches match)))

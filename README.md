@@ -1,6 +1,25 @@
 # football-prediction
 
-FIXME
+## About
+
+This project has the goal to give users simple predictions of outcomes in football games. 
+
+It's using MySQL database that is hosted on private hosting, Enlive as scrape library and Selmer as templating library. It has been developed in Eclipse Luna IDE.
+
+Algorithm used to calculate predictions is simple algorithm that uses past games from current season for both teams. Such algorithm is part of more complicated algorithm that is used on another site for football prediction, but for this project it's good enough. (http://www.forebet.com/en/strategies-for-predictions-making/85-host-guest-prediction.html)
+
+MySQL database has two tables: 
+1. users (username, password)
+2. matches (id, hometeam, awayteam, home, draw, away, username, status)
+
+Application has the following functionalities:
+
+1. User register, login, logout.
+2. Displaying predictions for fixtures that have been collected from www.scorespro.com (For demonstrating purposes it gives predictions for Spanish Primera Division).
+3. Saving matches per user to database for later review.
+4. Removing matches (updating flag to deleted) from database.
+
+ 
 
 ## Prerequisites
 
@@ -13,9 +32,17 @@ You will need [Leiningen][1] 1.7.0 or above installed.
 To start a web server for the application, run:
 
     lein ring server
+    
+## Process
 
-## License
+Submit 1.
 
+Setting up base for project.
+
+Submit 2.
+
+Added: Selmer templating library, connection to database, login page, register page, base for
+templates
 
 Submit 3. 
 
@@ -25,4 +52,8 @@ Submit 4.
 
 Added: Enlive for web scrape. Scrape statistics and fixtures from site. Apply algorithm to the data and calculate odds for matches outcome. 
 
-Copyright © 2015 FIXME
+Submit 5.
+
+Added: Saving matches to database per user. Removing matches from visual presentation to user. Security checks for unauthorized access for guests. Security checks for unauthorized access to database records from other users.
+
+Copyright © 2015 Dusan Stojakovic
