@@ -1,0 +1,34 @@
+{% extends "football_prediction/views/templates/base.html" %}
+
+{% block style %}
+{% endblock %} 
+{% block content %}
+      <div class="container top-space">
+      	<div class="row">
+			<div class="col-md-8">
+				<table class="table table-striped">
+			      <thead>
+			        <tr>
+			        	<th>Home Team</th>
+			        	<th>Away Team</th>
+			          	<th>Home</th>
+			          	<th>Draw</th>
+			          	<th>Away</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	{% for prediction in predictions %}
+				        <tr>
+			        		<td>{{prediction.teamh}}</td>
+				          	<td>{{prediction.teama}}</td>
+				          	<td>{{prediction.home}}%</td>
+				          	<td>{{prediction.draw}}%</td>
+				          	<td>{{prediction.away}}%</td>
+				        </tr>
+			        {% endfor %}
+			      </tbody>
+			    </table>
+			</div>
+		</div>
+      </div>
+{% endblock %}

@@ -3,7 +3,8 @@
             [compojure.core :refer [defroutes]]
             [noir.util.middleware :as noir-middleware]
             [football-prediction.routes.home :refer [home-routes]]
-            [football-prediction.routes.account :refer [account-routes]]))
+            [football-prediction.routes.account :refer [account-routes]]
+            [football-prediction.routes.predictions :refer [prediction-routes]]))
 
 (defn init []
   (println "football-prediction is starting"))
@@ -19,4 +20,5 @@
   (noir-middleware/app-handler 
     [home-routes
      account-routes
+     prediction-routes
      app-routes]))
