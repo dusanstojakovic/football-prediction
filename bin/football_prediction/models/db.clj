@@ -1,11 +1,43 @@
 (ns football-prediction.models.db
-  (:require [clojure.java.jdbc :as sql]))
+  (:require [clojure.java.jdbc :as sql])
+  (:import java.sql.DriverManager))
 
 (def db
-  {:subprotocol "mysql"
-   :subname "//195.154.187.199:3306/pcelarst_clojure"
-   :user "pcelarst_dusan"
-   :password "clojure123!"})
+  {:classname "org.sqlite.JDBC",
+   :subprotocol "sqlite",
+   :subname "db.fp"})
+
+(defn create-table-users []
+  (sql/with-connection 
+    db
+    (sql/create-table
+      :users
+      [:username "TEXT PRIMARY KEY"]
+      [:password "TEXT"])))
+
+(defn create-table-matches []
+  (sql/with-connection 
+    db
+    (sql/create-table
+      :matches
+      [:id "INTEGER PRIMARY KEY AUTOINCREMENT"]
+      [:hometeam "TEXT"]
+      [:awayteam "TEXT"]
+      [:home "TEXT"]
+      [:draw "TEXT"]
+      [:away "TEXT"]
+      [:username "TEXT"]
+      [:status "TEXT"])))
+
+(defn drop-table-users []
+  (sql/with-connection
+    db
+    (sql/drop-table :users)))
+
+(defn drop-table-matches []
+  (sql/with-connection
+    db
+    (sql/drop-table :matches)))
 
 (defn create-user [user]
   (sql/with-connection db

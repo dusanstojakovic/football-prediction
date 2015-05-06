@@ -56,4 +56,15 @@ Submit 5.
 
 Added: Saving matches to database per user. Removing matches from visual presentation to user. Security checks for unauthorized access for guests. Security checks for unauthorized access to database records from other users.
 
+Submit 6.
+
+Added: Support for multiple leagues (top five: England, Spain, Germany, France, Italy). Switching leagues depends on the GET parameter.
+
+Sumbit 7.
+
+Switched to embedded SQLite database. Handler.clj init function is configured to create new tables on each run and "destroy" function is configured to drop tables on the each server stop. This is done because this is only for testing purposes. If you want to keep database, you can easily delete these parts of "init" and "destroy" functions. Do not delete whole function, only these db parts.
+
+
+
+
 Copyright © 2015 Dusan Stojakovic
