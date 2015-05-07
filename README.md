@@ -4,20 +4,68 @@
 
 This project has the goal to give users simple predictions of outcomes in football games. 
 
-It's using MySQL database that is hosted on private hosting, Enlive as scrape library and Selmer as templating library. It has been developed in Eclipse Luna IDE.
+It's using SQLite databaseg, Enlive as scrape library and Selmer as templating library. It has been developed in Eclipse Luna IDE.
 
 Algorithm used to calculate predictions is simple algorithm that uses past games from current season for both teams. Such algorithm is part of more complicated algorithm that is used on another site for football prediction, but for this project it's good enough. (http://www.forebet.com/en/strategies-for-predictions-making/85-host-guest-prediction.html)
 
-MySQL database has two tables: 
+SQLite database has two tables: 
 1. users (username, password)
 2. matches (id, hometeam, awayteam, home, draw, away, username, status)
 
 Application has the following functionalities:
 
 1. User register, login, logout.
-2. Displaying predictions for fixtures that have been collected from www.scorespro.com (For demonstrating purposes it gives predictions for Spanish Primera Division).
+2. Displaying predictions for fixtures that have been collected from www.scorespro.com
 3. Saving matches per user to database for later review.
 4. Removing matches (updating flag to deleted) from database.
+5. Displaying prediction for five major leagues (England, Spain, Germany, France, Italy)
+6. Criterium tests
+
+
+## Criterium execution time tests
+
+Here are some results of criterium library tests. I have included Execution time mean and std-deviation results on my machine.
+Testing machine specification:
+	Intel Core i5-2450M @2.50GHz
+	8 GB RAM memory
+	64-bit Operating System, x64-based processor
+	Windows 8.1
+
+;;Returning link for get parameter
+;;Execution time mean : 4.033506 ns
+;;Execution time std-deviation : 0.122866 ns
+
+(with-progress-reporting(quick-bench (get-fix-link "spa")))
+
+;;Mapping to correct format predefined lazy sequence of home teams statistics
+;;Execution time mean : 76.280114 탎
+;;Execution time std-deviation : 1.736468 탎
+
+(with-progress-reporting(quick-bench (teams-map ht-map-data)))
+
+;;Mapping to correct format predefined lazy sequence of away teams statistics
+;;Execution time mean : 76.853077 탎
+;;Execution time std-deviation : 847.683300 ns
+
+(with-progress-reporting(quick-bench (teams-map at-map-data)))
+
+;;Mapping to correct format predefined lazy sequence of fixtures
+;;Execution time mean : 21.757234 ns
+;;Execution time std-deviation : 0.544358 ns
+
+(with-progress-reporting(quick-bench (fixtures-map fx-map-data)))
+
+;;Calculating predictions for one match with predefined home/away teams and sets.
+;;Execution time mean : 12.277712 탎
+;;Execution time std-deviation : 342.471607 ns
+
+(with-progress-reporting(quick-bench (search-points :REAL-MADRID :VALENCIA home-set away-set)))
+
+;;Final prediction result returning using predefined lazy-seq (it's full algorithm execution time)
+;;Execution time mean : 346.320613 탎
+;;Execution time std-deviation : 6.655723 탎
+
+(with-progress-reporting (quick-bench (prediction-res (fixtures-map fx-map-data) (teams-map ht-map-data) (teams-map at-map-data))))
 
  
 
@@ -60,11 +108,13 @@ Submit 6.
 
 Added: Support for multiple leagues (top five: England, Spain, Germany, France, Italy). Switching leagues depends on the GET parameter.
 
-Sumbit 7.
+Submit 7.
 
 Switched to embedded SQLite database. Handler.clj init function is configured to create new tables on each run and "destroy" function is configured to drop tables on the each server stop. This is done because this is only for testing purposes. If you want to keep database, you can easily delete these parts of "init" and "destroy" functions. Do not delete whole function, only these db parts.
 
+Submit 8.
 
+Added: Criterium tests.
 
 
 Copyright 짤 2015 Dusan Stojakovic

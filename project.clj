@@ -6,6 +6,7 @@
                  [net.cgrand/moustache "1.1.0" :exclusions [ring/ring-core org.clojure/clojure]]
                  [compojure "1.1.6"]              
                  [selmer "0.8.2"]
+                 [criterium "0.4.3"]
                  [ring-server "0.3.1"]                
                  [org.clojure/java.jdbc "0.2.3"]
                  [org.xerial/sqlite-jdbc "3.7.2"]
