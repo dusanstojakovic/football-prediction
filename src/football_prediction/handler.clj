@@ -6,6 +6,7 @@
             [football-prediction.routes.account :refer [account-routes]]
             [football-prediction.routes.predictions :refer [prediction-routes]]
             [football-prediction.routes.matches :refer [matches-routes]]
+            [football-prediction.routes.accuracy :refer [accuracy-routes]]
             [football-prediction.models.db :as db]))
 
 (defn init []
@@ -28,4 +29,5 @@
      account-routes
      prediction-routes
      matches-routes
+     accuracy-routes
      app-routes]))

@@ -1,0 +1,49 @@
+{% extends "football_prediction/views/templates/base.html" %}
+
+{% block style %}
+{% endblock %} 
+{% block content %}
+      <div class="container top-space">
+      	<div class="row">
+			<div class="col-md-8">
+				<table class="table table-striped">
+			      <thead>
+			        <tr>
+			        	<th>Home Team</th>
+			        	<th>Away Team</th>
+			          	<th>Result</th>
+			          	<th>Prediction</th>
+			          	<th>Good?</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	{% for result in results %}
+				        <tr>
+			        		<td>{{result.teamh|title}}</td>
+				          	<td>{{result.teama|title}}</td>
+				          	<td>{{result.result}}</td>
+				          	<td>{{result.prediction}}%</td>
+				          	<td><span class="label ">{{result.good}}</td>
+				        </tr>
+			        {% endfor %}
+			      </tbody>
+			    </table>
+			</div>
+		</div>
+      </div>
+{% endblock %}
+
+{% block script %}
+	<script>
+	$( document ).ready(function() {
+		$(".label").each(function() {
+			  if ($(this).text() === "yes") {
+				  $(this).addClass( "label-success" );
+			  } else {
+				  $(this).addClass( "label-danger" );
+			  }
+			});
+	});
+		
+	</script>
+{% endblock %}

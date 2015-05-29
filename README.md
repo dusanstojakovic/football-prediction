@@ -116,5 +116,21 @@ Submit 8.
 
 Added: Criterium tests.
 
+Submit 9.
+
+Added: Complete monitoring of algorithm accuracy on previous matches. Accuracy is calculated after 10 rounds, when there is enough data to work with. When calculating, only statistic of previously played matches before current match is being used. Algorithm for calculating is creating an virtual scores table using only results from matches before current match and that scores table is used for prediction. 
+
+Example: 
+
+After 12 rounds Almeria and Rayo Vallecano have the following results:
+- Almeria (home-won: 0, home-draw: 3, home-lost: 3, away-won: 2, away-draw: 1,away-lost: 3)
+- Rayo Vallecano (home-won: 2, home-draw: 1, home-lost: 3, away-won: 2, away-draw: 1,away-lost: 3)
+
+Prediction algorithm says that Rayo Vallecano has 41.67% for away-win.
+Real result was away-win (0:1) for Rayo Vallecano.
+
+Algorithm used for this calculation can be used for testing some other prediction algorithms and their accuracy, with some adaptations for other algorithm.
+
+
 
 Copyright © 2015 Dusan Stojakovic

@@ -25,6 +25,19 @@ body {
 	margin-top: 30px;
 }
 
+.label {
+  font-size: 100%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0em;
+  width: 60px;
+  display:block;
+}
+
 @media (min-width: 768px) {
 	.navbar {
 		  border-radius: 0px;
