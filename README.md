@@ -116,7 +116,7 @@ Submit 8.
 
 Added: Criterium tests.
 
-Submit 9.
+## Submit 9.
 
 Added: Complete monitoring of algorithm accuracy on previous matches. Accuracy is calculated after 10 rounds, when there is enough data to work with. When calculating, only statistic of previously played matches before current match is being used. Algorithm for calculating is creating an virtual scores table using only results from matches before current match and that scores table is used for prediction. 
 
@@ -131,6 +131,9 @@ Real result was away-win (0:1) for Rayo Vallecano.
 
 Algorithm used for this calculation can be used for testing some other prediction algorithms and their accuracy, with some adaptations for other algorithm.
 
+## Submit 10.
+
+Added: Following of overall good and bad accuracy for leagues.
 
 
 Copyright © 2015 Dusan Stojakovic

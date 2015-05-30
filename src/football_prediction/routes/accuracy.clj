@@ -129,11 +129,25 @@
               (println "Kraj"))))
         fin-set)))
 
+(defn count-good [res-set yes-count no-count]
+  (if (not (empty? res-set))
+    (let [current (:good (first res-set))]
+      (if (= current "yes")
+        (count-good (rest res-set) (+ yes-count 1) no-count)
+        (count-good (rest res-set) yes-count (+ no-count 1))))
+    {:yes yes-count :no no-count}))
+
+(defn calc-overall [res-set yes-no-count]
+  {:good (format "%.2f" (* (float (/ (:yes yes-no-count) (count res-set))) 100)) :bad (format "%.2f" (* (float (/ (:no yes-no-count) (count res-set))) 100))})
+
 (defn accuracy-page [league]
   (if (session/get :user)
-    (let [result-set (partition 2 (get-results (get-res-link league)))]
+    (let [result-set (partition 2 (get-results (get-res-link league)))
+          final-result-set (accuracy-res result-set)
+          overall-acc (calc-overall final-result-set (count-good final-result-set 0 0))]
 	    (layout/render "accuracy.html" 
-	                   {:results (accuracy-res result-set)}))
+	                   {:results final-result-set
+                     :accuracy overall-acc}))
 	    (resp/redirect "/login")))
 
 (defroutes accuracy-routes

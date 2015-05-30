@@ -23,9 +23,25 @@
 				          	<td>{{result.teama|title}}</td>
 				          	<td>{{result.result}}</td>
 				          	<td>{{result.prediction}}%</td>
-				          	<td><span class="label ">{{result.good}}</td>
+				          	<td><span class="table-lbl label ">{{result.good}}</span></td>
 				        </tr>
 			        {% endfor %}
+			      </tbody>
+			    </table>
+			</div>
+			<div class="col-md-4">
+				<table class="table table-striped">
+			      <thead>
+			        <tr>
+			        	<th>Overall good</th>
+			        	<th>Overall bad</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+				        <tr>
+			        		<td><span class="label label-success">{{accuracy.good}}</span></td>
+				          	<td><span class="label label-danger">{{accuracy.bad}}</span></td>
+				        </tr>
 			      </tbody>
 			    </table>
 			</div>
@@ -36,7 +52,7 @@
 {% block script %}
 	<script>
 	$( document ).ready(function() {
-		$(".label").each(function() {
+		$(".table-lbl").each(function() {
 			  if ($(this).text() === "yes") {
 				  $(this).addClass( "label-success" );
 			  } else {
